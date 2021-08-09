@@ -5,14 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainClass {
+
     private static String reversionType = new String();
     private static String userStr = new String("");
     private static String userSubStr = new String("");
     private static Integer firstIndex, lastIndex;
 
     public static void main(String[] args) {
-
-
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         while (!reversionType.equals("quit")) {
             while (userStr.equals("")) {

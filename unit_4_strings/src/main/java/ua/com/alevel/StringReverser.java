@@ -2,7 +2,6 @@ package ua.com.alevel;
 
 public class StringReverser {
 
-
     public static String reverse(String src, boolean reverseAll) {
         if(reverseAll) {
             String reversedScr = simpleReverse(src);
