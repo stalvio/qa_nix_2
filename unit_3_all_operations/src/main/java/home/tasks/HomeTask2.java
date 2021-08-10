@@ -13,7 +13,6 @@ public class HomeTask2 {
 
         char[] onlyLettersArray = new char[onlyLetters.length()];
 
-
         for (int i = 0; i < onlyLetters.length(); i++) {
             onlyLettersArray[i] = onlyLetters.charAt(i);
         }
@@ -58,5 +57,4 @@ public class HomeTask2 {
     private String extractOnlyLetters(String input) {
         return input.replaceAll("[^a-zA-Z]", "");
     }
-
 }
