@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class HomeTask1 {
 
     public void run() {
-
         Scanner in = new Scanner(System.in);
         int sum = 0;
         System.out.print("Please, type your input: ");
@@ -21,7 +20,6 @@ public class HomeTask1 {
         }
 
         System.out.println("The sum of extracted digits is: " + sum + "\n");
-
     }
 
     private String extractOnlyDigits (String originString) {
