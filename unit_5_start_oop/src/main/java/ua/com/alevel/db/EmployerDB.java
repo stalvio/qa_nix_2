@@ -22,8 +22,8 @@ public class EmployerDB {
         totalNumEmp++;
 
         employers = newEmployers;
-        System.out.println("Congratulation! A new  " + employers[totalNumEmp-1].getOccupation().toLowerCase() +
-                " " + employers[totalNumEmp-1].getName() + " was successfully hired!");
+        System.out.println("Congratulation! A new  " + employers[totalNumEmp - 1].getOccupation().toLowerCase() +
+                " " + employers[totalNumEmp - 1].getName() + " was successfully hired!");
     }
 
     public void update(Employer updatedEmp) {
@@ -48,7 +48,6 @@ public class EmployerDB {
             for (int i = 0; i < employers.length; i++) {
                 if (employers[i].getId().equals(empId)) {
                     name = employers[i].getName();
-
                     i++;
                 }
                 latestEmployers[j] = employers[i];
@@ -85,7 +84,6 @@ public class EmployerDB {
             }
         }
         return false;
-
     }
 }
 
