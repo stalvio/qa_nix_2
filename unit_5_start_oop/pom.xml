@@ -39,6 +39,7 @@
         </plugins>
     </build>
 
+<!--    зачем это, если не используешь?-->
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
