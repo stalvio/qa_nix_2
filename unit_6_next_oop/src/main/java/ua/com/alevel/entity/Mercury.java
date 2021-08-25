@@ -1,13 +1,13 @@
 package ua.com.alevel.entity;
 
+import ua.com.alevel.service.BasePlanet;
+
+import java.math.BigDecimal;
+
 public class Mercury extends BasePlanet {
 
     public Mercury() {
-        setMass(3.3 * Math.pow(10, 23));
-        setRadius(2439000);
-    }
-
-    public double getAccelerationOfGravity() {
-        return (gravitationConst * getMass()) / Math.pow(getRadius(), 2);
+        setMass(new BigDecimal(3.3 * Math.pow(10, 23)));
+        setRadius(new BigDecimal(2439000));
     }
 }

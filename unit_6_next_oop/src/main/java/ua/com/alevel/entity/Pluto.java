@@ -1,13 +1,13 @@
 package ua.com.alevel.entity;
 
+import ua.com.alevel.service.BasePlanet;
+
+import java.math.BigDecimal;
+
 public class Pluto extends BasePlanet {
 
     public Pluto() {
-        setMass(5.97 * Math.pow(10, 24));
-        setRadius(6371000);
-    }
-
-    public double getAccelerationOfGravity() {
-        return (gravitationConst * getMass()) / Math.pow(getRadius(), 2);
+        setMass(new BigDecimal(1.3 * Math.pow(10, 22)));
+        setRadius(new BigDecimal(1195000));
     }
 }

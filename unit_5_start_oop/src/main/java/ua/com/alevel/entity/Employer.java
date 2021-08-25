@@ -38,6 +38,16 @@ public class Employer {
         return age;
     }
 
+    @Override
+    public String toString() {
+        return "Employer{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", id='" + id + '\'' +
+                ", occupation='" + occupation + '\'' +
+                '}';
+    }
+
     public String getId() {
         return id;
     }
