@@ -13,7 +13,7 @@ public class PlanetController {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String userInput = "";
         try {
-            while (!userInput.equals("N")) {
+            while (true) {
                 System.out.println("Please, select the planet which 'Acceleration Of Gravity' you would like to get:");
                 runPlanetOptionNavigation();
                 userInput = reader.readLine();
@@ -22,6 +22,10 @@ public class PlanetController {
                         "Enter any symbol if YES \n" +
                         "Enter N if NO");
                 userInput = reader.readLine();
+                if(userInput.equals("N")) {
+                    System.out.println("Thank you for your time!");
+                    System.exit(0);
+                }
             }
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
@@ -38,7 +42,6 @@ public class PlanetController {
         System.out.println("Enter 7 for Uranus");
         System.out.println("Enter 8 for Neptune");
         System.out.println("Enter 9 for Pluto");
-        System.out.println("Enter 0 to quit");
     }
 
     private static void runCalculation(String input) {
@@ -80,10 +83,6 @@ public class PlanetController {
             case "9":
                 System.out.print("Pluto's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Pluto());
-                break;
-            case "0":
-                System.out.print("Thank you for your time!");
-                System.exit(0);
                 break;
             default: {
                 System.out.println("You've entered an invalid value. Please, make your choice from the listed options. \n");
