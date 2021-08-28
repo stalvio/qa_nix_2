@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 public class PlanetController {
 
     public static void start() {
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String userInput = "";
         try {
@@ -42,51 +43,48 @@ public class PlanetController {
         System.out.println("Enter 7 for Uranus");
         System.out.println("Enter 8 for Neptune");
         System.out.println("Enter 9 for Pluto");
+        System.out.println("Enter 0 for all planets");
     }
 
     private static void runCalculation(String input) {
         switch (input) {
             case "1": {
-                System.out.print("Mercury's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Mercury());
             }
             break;
             case "2": {
-                System.out.print("Venus's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Venus());
             }
             break;
             case "3":
-                System.out.print("Earth's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Earth());
                 break;
             case "4":
-                System.out.print("Mars's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Mars());
                 break;
             case "5":
-                System.out.print("Jupiter's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Jupiter());
                 break;
             case "6":
-                System.out.print("Saturn's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Saturn());
                 break;
             case "7":
-                System.out.print("Uranus's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Uranus());
                 break;
             case "8":
-                System.out.print("Neptune's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Neptune());
                 break;
             case "9":
-                System.out.print("Pluto's 'Acceleration Of Gravity' is: ");
                 PlanetReporter.print(new Pluto());
+                break;
+            case "0":
+                PlanetReporter.printAll();
                 break;
             default: {
                 System.out.println("You've entered an invalid value. Please, make your choice from the listed options. \n");
             }
         }
     }
+
+
 }

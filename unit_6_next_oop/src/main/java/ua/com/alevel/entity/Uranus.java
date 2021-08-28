@@ -5,6 +5,6 @@ import java.math.BigDecimal;
 public final class Uranus extends BasePlanet {
 
     public Uranus() {
-        super(new BigDecimal(3.3 * Math.pow(10, 23)), new BigDecimal(2439000));
+        super(new BigDecimal(8.7 * Math.pow(10, 25)), new BigDecimal(25559000));
     }
 }

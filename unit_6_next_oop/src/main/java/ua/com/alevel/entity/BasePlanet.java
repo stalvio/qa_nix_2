@@ -7,8 +7,8 @@ import java.math.RoundingMode;
 
 public abstract class BasePlanet implements Planet {
 
-    private static BigDecimal planetMass;
-    private static BigDecimal planetRadius;
+    private BigDecimal planetMass;
+    private BigDecimal planetRadius;
     protected final BigDecimal GRAVITATION_CONST = new BigDecimal(6.67 * Math.pow(10, -11));
 
     public BasePlanet(BigDecimal mass, BigDecimal radius) {
