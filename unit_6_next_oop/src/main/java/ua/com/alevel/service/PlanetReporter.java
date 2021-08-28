@@ -2,7 +2,7 @@ package ua.com.alevel.service;
 
 import ua.com.alevel.entity.*;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class PlanetReporter {
 
@@ -12,14 +12,14 @@ public class PlanetReporter {
     }
 
     public static void printAll() {
-        HashSet<Planet> allPlanets = getAllPlanets();
+        ArrayList<Planet> allPlanets = getAllPlanets();
         for (Planet planet : allPlanets) {
             print(planet);
         }
     }
 
-    private static HashSet<Planet> getAllPlanets() {
-        HashSet<Planet> planets = new HashSet<Planet>();
+    private static ArrayList<Planet> getAllPlanets() {
+        ArrayList<Planet> planets = new ArrayList<Planet>();
         planets.add(new Mercury());
         planets.add(new Venus());
         planets.add(new Earth());
