@@ -40,6 +40,7 @@ public class MathSet {
     }
 
     MathSet(MathSet... numbers) {
+        this(numbers.length * INITIAL_CAPACITY);
         for (MathSet num : numbers) {
             join(num);
         }
@@ -309,11 +310,13 @@ public class MathSet {
         return copiedArray;
     }
 
+    // Method is made public only for the testing purposes
     @Override
     public String toString() {
         return "MathSet{" +
                 "mathSet=" + Arrays.toString(mathSet) +
                 ", size=" + size +
+                ", current_capacity=" + mathSet.length +
                 '}';
     }
 }
