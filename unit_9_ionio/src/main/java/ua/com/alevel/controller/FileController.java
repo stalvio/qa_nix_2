@@ -20,11 +20,11 @@ public class FileController {
         try {
             userInput = reader.readLine();
             FileModel fileModel = new FileModel();
-            fileModel.setFileName("input");
+            fileModel.setFileName(FileType.INPUT.getFileName());
             fileModel.setContent(userInput);
             fileModel.setFileType(FileType.INPUT);
             fileService.create(fileModel);
-            System.out.println("Your input was saved in INPUT.txt file. Please, select from the following options:");
+            System.out.println("Your input was saved in input.txt file of this directory. Please, select from the following options:");
             navigation();
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
@@ -33,10 +33,12 @@ public class FileController {
 
     private void navigation() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter 1, to get the statistic on numbers of duplicates, palindrome, and sentences");
-        System.out.println("Enter 2, to check your input from INPUT.txt file");
-        System.out.println("Enter 3, to update your input with duplicates and palindrome");
-        System.out.println("Enter 4, to delete INPUT.txt and OUTPUT.txt");
+        System.out.println("Enter 1, to store the statistic on numbers of duplicates, palindrome, and sentences in output.txt file");
+        System.out.println("Enter 2, to check the statistic from output.txt file");
+        System.out.println("Enter 3, to check your input from input.txt file");
+        System.out.println("Enter 4, to delete input.txt file");
+        System.out.println("Enter 5, to delete output.txt file");
+        System.out.println("Enter 6, to update your input");
         System.out.println("Enter 0, to quit");
         String fileOption;
         try {
@@ -52,23 +54,39 @@ public class FileController {
         FileModel fileModel = new FileModel();
         switch (fileOption) {
             case "1":
-             //   fileModel.setFileType(FileType.OUTPUT);
-                fileModel.setFileName("output");
+                fileModel.setFileType(FileType.OUTPUT);
+                fileModel.setFileName(FileType.OUTPUT.getFileName());
                 fileService.create(fileModel);
-
+                System.out.println("The statistic on your input was successfully created and stored in output.txt file");
+                System.out.println();
                 navigation();
                 break;
             case "2":
-             //   fileModel.setFileType(FileType.INPUT);
-                fileModel.setFileName("input");
+                fileModel.setFileType(FileType.OUTPUT);
+                fileModel.setFileName(FileType.OUTPUT.getFileName());
+                System.out.println("Here is the statistic from the output.txt file");
                 System.out.println(fileService.read(fileModel.getFileName()));
+                System.out.println();
+                navigation();
+                break;
+            case "3":
+                fileModel.setFileType(FileType.INPUT);
+                fileModel.setFileName(FileType.INPUT.getFileName());
+                System.out.println("Here is the content from the input.txt file");
+                System.out.println(fileService.read(fileModel.getFileName()));
+                System.out.println();
                 navigation();
                 break;
             case "4":
-                //fileModel.setFileType(FileType.INPUT);
-                fileModel.setFileName("output");
-                fileService.delete("output");
+                fileService.delete(FileType.INPUT.getFileName());
                 navigation();
+                break;
+            case "5":
+                fileService.delete(FileType.OUTPUT.getFileName());
+                navigation();
+                break;
+            case "6":
+                start();
                 break;
             case "0":
                 System.exit(1);
