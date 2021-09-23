@@ -37,7 +37,7 @@ public class FIleServiceImpl implements FileService {
 
     public void delete(String fileName) {
         if (!isExist(fileName)) {
-            System.out.println(fileName + ".txt wasn't created yet.");
+            System.out.println(fileName + ".txt is not exist");
             System.out.println();
         } else {
             File file = new File(fileName + ".txt");
@@ -51,7 +51,7 @@ public class FIleServiceImpl implements FileService {
 
     public String read(String fileName) {
         if (!isExist(fileName)) {
-            System.out.println(fileName + ".txt wasn't created yet.");
+            System.out.println(fileName + ".txt is not exist");
         } else {
             File file = new File(fileName + ".txt");
             try {
@@ -59,7 +59,6 @@ public class FIleServiceImpl implements FileService {
                 String fileContent; //= reader.readLine();
                 fileContent =  reader.lines().collect(Collectors.joining());
                 reader.close();
-                System.out.println("Here is the content of " +  fileName + ".txt file");
                 return fileContent;
             } catch (IOException e) {
                 e.printStackTrace();

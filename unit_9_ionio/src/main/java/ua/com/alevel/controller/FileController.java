@@ -65,15 +65,15 @@ public class FileController {
             case "2":
                 fileModel.setFileType(FileType.OUTPUT);
                 fileModel.setFileName(FileType.OUTPUT.getFileName());
-                System.out.println(fileService.read(fileModel.getFileName()));
-                System.out.println();
+                String outputData = fileService.read(fileModel.getFileName());
+                printData(outputData);
                 navigation();
                 break;
             case "3":
                 fileModel.setFileType(FileType.INPUT);
                 fileModel.setFileName(FileType.INPUT.getFileName());
-                System.out.println(fileService.read(fileModel.getFileName()));
-                System.out.println();
+                String inputData = fileService.read(fileModel.getFileName());
+                printData(inputData);
                 navigation();
                 break;
             case "4":
@@ -85,6 +85,7 @@ public class FileController {
                 navigation();
                 break;
             case "6":
+                fileService.delete(FileType.OUTPUT.getFileName());
                 start();
                 break;
             case "0":
@@ -95,7 +96,13 @@ public class FileController {
                 navigation();
 
         }
+    }
 
+    private void printData(String content) {
+        if(content!= null) {
+            System.out.println(content);
+            System.out.println();
+        }
     }
 }
 
