@@ -24,6 +24,7 @@ public class FileController {
             fileModel.setContent(userInput);
             fileModel.setFileType(FileType.INPUT);
             fileService.create(fileModel);
+            System.out.println();
             System.out.println("Your input was saved in input.txt file of this directory. Please, select from the following options:");
             navigation();
         } catch (IOException e) {
@@ -64,7 +65,6 @@ public class FileController {
             case "2":
                 fileModel.setFileType(FileType.OUTPUT);
                 fileModel.setFileName(FileType.OUTPUT.getFileName());
-                System.out.println("Here is the statistic from the output.txt file");
                 System.out.println(fileService.read(fileModel.getFileName()));
                 System.out.println();
                 navigation();
@@ -72,7 +72,6 @@ public class FileController {
             case "3":
                 fileModel.setFileType(FileType.INPUT);
                 fileModel.setFileName(FileType.INPUT.getFileName());
-                System.out.println("Here is the content from the input.txt file");
                 System.out.println(fileService.read(fileModel.getFileName()));
                 System.out.println();
                 navigation();

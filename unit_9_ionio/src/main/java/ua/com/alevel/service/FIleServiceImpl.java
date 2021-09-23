@@ -10,20 +10,20 @@ import java.util.stream.Collectors;
 
 public class FIleServiceImpl implements FileService {
 
-    private static final String BASE_PATH = "unit_9_ionio";
+   // private static final String BASE_PATH = "unit_9_ionio";
 
     public void create(FileModel fileModel) {
         File file = null;
         switch (fileModel.getFileType()) {
             case INPUT: {
-                file = new File(BASE_PATH + "/" + fileModel.getFileName() + ".txt");
+                file = new File(fileModel.getFileName() + ".txt");
             }
             break;
             case OUTPUT: {
                 String inputContent = read(FileType.INPUT.getFileName());
                 String outputContent = getStatistic(inputContent);
                 fileModel.setContent(outputContent);
-                file = new File(BASE_PATH + "/" + fileModel.getFileName() + ".txt");
+                file = new File( fileModel.getFileName() + ".txt");
             }
             break;
         }
@@ -40,9 +40,9 @@ public class FIleServiceImpl implements FileService {
             System.out.println(fileName + ".txt wasn't created yet.");
             System.out.println();
         } else {
-            File file = new File(BASE_PATH + "/" + fileName + ".txt");
+            File file = new File(fileName + ".txt");
 
-           // file.deleteOnExit(); <- using this method the files are deleted only after exiting the program.
+           // file.deleteOnExit(); <- when using deleteOnExit() the files are deleted only after exiting
             file.delete();
             System.out.println(fileName + ".txt was deleted.");
             System.out.println();
@@ -53,12 +53,13 @@ public class FIleServiceImpl implements FileService {
         if (!isExist(fileName)) {
             System.out.println(fileName + ".txt wasn't created yet.");
         } else {
-            File file = new File(BASE_PATH + "/" + fileName + ".txt");
+            File file = new File(fileName + ".txt");
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String fileContent; //= reader.readLine();
                 fileContent =  reader.lines().collect(Collectors.joining());
                 reader.close();
+                System.out.println("Here is the content of " +  fileName + ".txt file");
                 return fileContent;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -68,8 +69,10 @@ public class FIleServiceImpl implements FileService {
     }
 
     private boolean isExist(String fileName) {
-        File file = new File(BASE_PATH + "/");
-        return Arrays.asList(file.list()).stream().anyMatch(fName -> (fName.equals(fileName + ".txt")));
+        File file = new File(fileName + ".txt");
+        if(file.exists() && !file.isDirectory()) return true;
+
+        return false;
     }
 
     private String getStatistic(String inputContent) {
