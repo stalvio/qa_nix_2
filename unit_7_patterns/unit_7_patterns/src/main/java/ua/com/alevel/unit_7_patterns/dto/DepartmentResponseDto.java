@@ -16,7 +16,15 @@ public class DepartmentResponseDto {
         workers = department.getWorkersId();
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public ArrayList<String> getWorkers() {
+        return workers;
+    }
 }

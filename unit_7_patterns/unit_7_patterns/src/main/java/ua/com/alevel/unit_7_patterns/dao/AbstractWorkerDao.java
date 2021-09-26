@@ -24,6 +24,8 @@ public class AbstractWorkerDao {
             current.setFirstName(worker.getFirstName());
             current.setLastName(worker.getLastName());
             current.setDepartment(worker.getDepartment());
+        } else {
+            throw new WorkerNotFoundException("Requested worker does not exist");
         }
     }
 
@@ -32,8 +34,11 @@ public class AbstractWorkerDao {
     }
 
     protected Worker findWorkerById(String id) {
-        if (existById(id)) return workers.stream().filter(worker -> worker.getId().equals(id)).findFirst().get();
-        return null;
+        if (existById(id)) {
+            return workers.stream().filter(worker -> worker.getId().equals(id)).findFirst().get();
+        } else {
+            throw new WorkerNotFoundException("Requested worker does not exist");
+        }
     }
 
     protected List<Worker> findAllWorkers() {
@@ -53,10 +58,6 @@ public class AbstractWorkerDao {
     }
 
     private boolean existById(String id) {
-        if (!workers.stream().anyMatch(worker -> worker.getId().equals(id))) {
-            throw new WorkerNotFoundException("Requested worker does not exist");
-        } else {
         return workers.stream().anyMatch(worker -> worker.getId().equals(id));
-    }
     }
 }

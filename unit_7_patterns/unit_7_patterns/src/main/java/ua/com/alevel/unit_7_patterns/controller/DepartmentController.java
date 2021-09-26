@@ -3,7 +3,9 @@ package ua.com.alevel.unit_7_patterns.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.com.alevel.unit_7_patterns.dto.*;
+import ua.com.alevel.unit_7_patterns.dto.DepartmentRequestDto;
+import ua.com.alevel.unit_7_patterns.dto.DepartmentResponseDto;
+import ua.com.alevel.unit_7_patterns.dto.ResponseContainer;
 import ua.com.alevel.unit_7_patterns.facade.DepartmentFacade;
 
 import java.util.List;
@@ -39,7 +41,7 @@ public class DepartmentController {
     @GetMapping("/{id}")
     public ResponseEntity<ResponseContainer<DepartmentResponseDto>> findById(@PathVariable String id) {
         ResponseContainer<DepartmentResponseDto> responseContainer = new ResponseContainer<>(departmentFacade.findById(id));
-        return ResponseEntity.ok(new ResponseContainer());
+        return ResponseEntity.ok(responseContainer);
     }
 
     @GetMapping

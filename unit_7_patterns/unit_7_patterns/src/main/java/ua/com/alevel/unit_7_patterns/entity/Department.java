@@ -30,7 +30,7 @@ public class Department {
     }
 
     public void setWorkersId(String workersId) {
-        ArrayList<String> workers = new ArrayList<String>(Arrays.asList(workersId.split(", ")));
+        ArrayList<String> workers = new ArrayList<String>(Arrays.asList(workersId.split(",")));
         this.workersId = workers;
     }
 

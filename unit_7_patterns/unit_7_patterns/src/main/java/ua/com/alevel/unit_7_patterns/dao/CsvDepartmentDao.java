@@ -80,8 +80,8 @@ public class CsvDepartmentDao extends AbstractDepartmentDao implements FileIO, D
             String[] currentDepartment = new String[3];
             currentDepartment[0] = u.getId();
             currentDepartment[1] = u.getName();
-            if(!(u.getWorkersId() == null) && !u.getWorkersId().equals("No workers")) {
-                currentDepartment[2] = u.getWorkersId().toString().substring(1, u.getWorkersId().toString().length() - 1);
+            if(!(u.getWorkersId() == null) && (!u.getWorkersId().equals("No workers") || u.getWorkersId().equals(""))) {
+                currentDepartment[2] = u.getWorkersId().toString().substring(1, u.getWorkersId().toString().length() - 1).replace(" ", "");
             } else {
                 currentDepartment[2] = "No workers";
             }

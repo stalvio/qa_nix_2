@@ -3,6 +3,7 @@ package ua.com.alevel.unit_7_patterns.service;
 import org.springframework.stereotype.Service;
 import ua.com.alevel.unit_7_patterns.dao.DepartmentDao;
 import ua.com.alevel.unit_7_patterns.entity.Department;
+import ua.com.alevel.unit_7_patterns.exception.DepartmentCanNotBeDeleted;
 import ua.com.alevel.unit_7_patterns.exception.DepartmentNotFoundException;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         if(isEmpty(id)) {
             departmentDao.delete(id);
         } else {
-            throw new DepartmentNotFoundException("Requested department does not exist");
+            throw new DepartmentCanNotBeDeleted();
         }
     }
 

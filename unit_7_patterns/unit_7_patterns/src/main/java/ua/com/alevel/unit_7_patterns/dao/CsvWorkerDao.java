@@ -121,7 +121,10 @@ public class CsvWorkerDao extends AbstractWorkerDao implements WorkerDao, FileIO
                     }
                 } else {
                     for(String id: department.getWorkersId()) {
-                        if(id.equals(worker.getId())) department.getWorkersId().remove(worker.getId());
+                        if(id.equals(worker.getId())) {
+                            department.getWorkersId().remove(worker.getId());
+                            break;
+                        }
                     }
                 }
             }
