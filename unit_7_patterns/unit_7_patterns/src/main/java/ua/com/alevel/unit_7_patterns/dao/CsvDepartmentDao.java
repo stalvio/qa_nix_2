@@ -51,7 +51,7 @@ public class CsvDepartmentDao extends AbstractDepartmentDao implements FileIO, D
 
     @Override
     public void loadEntities() {
-        try(CSVReader reader = new CSVReader(new FileReader("departments.csv"))) {
+        try (CSVReader reader = new CSVReader(new FileReader("departments.csv"))) {
             super.departments.clear();
             List<String[]> res = reader.readAll();
             for (String[] re : res) {
@@ -80,14 +80,14 @@ public class CsvDepartmentDao extends AbstractDepartmentDao implements FileIO, D
             String[] currentDepartment = new String[3];
             currentDepartment[0] = u.getId();
             currentDepartment[1] = u.getName();
-            if(!(u.getWorkersId() == null) && (!u.getWorkersId().equals("NoWorkers") || u.getWorkersId().equals(""))) {
+            if (!(u.getWorkersId() == null) && (!u.getWorkersId().equals("NoWorkers") || u.getWorkersId().equals(""))) {
                 currentDepartment[2] = u.getWorkersId().toString().substring(1, u.getWorkersId().toString().length() - 1).replace(" ", "");
             } else {
                 currentDepartment[2] = "NoWorkers";
             }
             csvData.add(currentDepartment);
         }
-        try(CSVWriter writer = new CSVWriter(new FileWriter("departments.csv"))) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter("departments.csv"))) {
             writer.writeAll(csvData);
         } catch (IOException e) {
             e.printStackTrace();
@@ -95,8 +95,7 @@ public class CsvDepartmentDao extends AbstractDepartmentDao implements FileIO, D
     }
 
     private void writeHeader() {
-        String[] header = { "id", "DepartmentName", "Workers" };
+        String[] header = {"id", "DepartmentName", "Workers"};
         csvData.add(header);
     }
-
 }

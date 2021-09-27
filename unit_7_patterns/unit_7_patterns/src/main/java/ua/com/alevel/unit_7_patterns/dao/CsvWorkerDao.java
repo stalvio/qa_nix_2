@@ -62,7 +62,7 @@ public class CsvWorkerDao extends AbstractWorkerDao implements WorkerDao, FileIO
 
     @Override
     public void loadEntities() {
-        try(CSVReader reader = new CSVReader(new FileReader("workers.csv"))) {
+        try (CSVReader reader = new CSVReader(new FileReader("workers.csv"))) {
             super.workers.clear();
             List<String[]> res = reader.readAll();
             for (String[] re : res) {
@@ -101,40 +101,40 @@ public class CsvWorkerDao extends AbstractWorkerDao implements WorkerDao, FileIO
             } else {
                 currentWorker[5] = "No Department";
             }
-                csvData.add(currentWorker);
-            }
-            try(CSVWriter writer = new CSVWriter(new FileWriter("workers.csv"))) {
-                writer.writeAll(csvData);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            csvData.add(currentWorker);
         }
+        try (CSVWriter writer = new CSVWriter(new FileWriter("workers.csv"))) {
+            writer.writeAll(csvData);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-        private void updateDepartments(Worker worker) {
-            CsvDepartmentDao csvDepartmentDao = new CsvDepartmentDao();
-            csvDepartmentDao.loadEntities();
-            for (Department department: csvDepartmentDao.departments) {
-                if(department.getId().equals(worker.getDepartment())){
-                    department.getWorkersId().add(worker.getId());
-                    if(department.getWorkersId().contains("NoWorkers")){
-                        department.getWorkersId().remove(0);
-                    }
-                } else {
-                    for(String id: department.getWorkersId()) {
-                        if(id.equals(worker.getId())) {
-                            department.getWorkersId().remove(worker.getId());
-                            break;
-                        }
+    private void updateDepartments(Worker worker) {
+        CsvDepartmentDao csvDepartmentDao = new CsvDepartmentDao();
+        csvDepartmentDao.loadEntities();
+        for (Department department : csvDepartmentDao.departments) {
+            if (department.getId().equals(worker.getDepartment())) {
+                department.getWorkersId().add(worker.getId());
+                if (department.getWorkersId().contains("NoWorkers")) {
+                    department.getWorkersId().remove(0);
+                }
+            } else {
+                for (String id : department.getWorkersId()) {
+                    if (id.equals(worker.getId())) {
+                        department.getWorkersId().remove(worker.getId());
+                        break;
                     }
                 }
             }
-            csvDepartmentDao.storeEntities();
         }
+        csvDepartmentDao.storeEntities();
+    }
 
     private void removeWorkerFromDepartment(String workerId) {
         CsvDepartmentDao csvDepartmentDao = new CsvDepartmentDao();
         csvDepartmentDao.loadEntities();
-        for (Department department: csvDepartmentDao.departments) {
+        for (Department department : csvDepartmentDao.departments) {
             if (!department.getWorkersId().isEmpty()) {
                 for (String id : department.getWorkersId()) {
                     if (id.equals(workerId)) {
@@ -142,14 +142,14 @@ public class CsvWorkerDao extends AbstractWorkerDao implements WorkerDao, FileIO
                         break;
                     }
                 }
-                if(department.getWorkersId().isEmpty()) department.getWorkersId().add("NoWorkers");
+                if (department.getWorkersId().isEmpty()) department.getWorkersId().add("NoWorkers");
             }
         }
         csvDepartmentDao.storeEntities();
     }
 
     private void writeHeader() {
-        String[] header = { "id", "firstName", "lastName", "email", "birthDay", "department" };
+        String[] header = {"id", "firstName", "lastName", "email", "birthDay", "department"};
         csvData.add(header);
     }
 }

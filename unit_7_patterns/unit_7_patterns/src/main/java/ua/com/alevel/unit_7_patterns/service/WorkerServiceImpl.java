@@ -8,7 +8,7 @@ import ua.com.alevel.unit_7_patterns.exception.DepartmentNotFoundException;
 import java.util.List;
 
 @Service
-public class WorkerServiceImpl implements WorkerService{
+public class WorkerServiceImpl implements WorkerService {
 
     private final WorkerDao workerDao;
 
@@ -28,12 +28,12 @@ public class WorkerServiceImpl implements WorkerService{
 
     @Override
     public void delete(String id) {
-        if(isExist(id)) {
+        if (isExist(id)) {
             workerDao.delete(id);
         } else {
             throw new DepartmentNotFoundException("Requested worker does not exist");
         }
-    //    workerDao.delete(id);
+        //    workerDao.delete(id);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class WorkerServiceImpl implements WorkerService{
     }
 
     private boolean isExist(String id) {
-        if(workerDao.findById(id).equals(null)){
+        if (workerDao.findById(id).equals(null)) {
             return false;
         } else {
             return true;

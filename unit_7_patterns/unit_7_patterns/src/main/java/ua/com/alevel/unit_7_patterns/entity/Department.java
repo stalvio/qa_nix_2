@@ -33,36 +33,4 @@ public class Department {
         ArrayList<String> workers = new ArrayList<String>(Arrays.asList(workersId.split(",")));
         this.workersId = workers;
     }
-
-//    public static Builder newDepartment() {
-//        return new Department().new Builder();
-//    }
-//
-//    public class Builder {
-//
-//        private Builder() {
-//        }
-//
-//        public Builder setId(String id) {
-//            Department.this.id = id;
-//            return this;
-//        }
-//
-//        public Builder setName(String name) {
-//            Department.this.name = name;
-//            return this;
-//        }
-//
-//        public Builder setWorkers(String workers) {
-//            String workersArr[] = workers.split(", ");
-//            ArrayList<String> al = new ArrayList<String>();
-//            al.addAll(Arrays.asList(workersArr));
-//            Department.this.workersId = al;
-//            return this;
-//        }
-//
-//        public Department build() {
-//            return Department.this;
-//        }
-//    }
 }

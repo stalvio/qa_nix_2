@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 )
 public class DepartmentNotFoundException extends RuntimeException {
 
-        public DepartmentNotFoundException(String s) {
-            super(s);
-        }
+    public DepartmentNotFoundException(String s) {
+        super(s);
     }
+}

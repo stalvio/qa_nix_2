@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 )
 public class WorkerNotFoundException extends RuntimeException {
 
-        public WorkerNotFoundException(String s) {
-            super(s);
-        }
+    public WorkerNotFoundException(String s) {
+        super(s);
     }
+}
