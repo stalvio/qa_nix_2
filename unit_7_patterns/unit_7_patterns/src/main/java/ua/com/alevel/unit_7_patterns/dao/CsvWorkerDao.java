@@ -116,7 +116,7 @@ public class CsvWorkerDao extends AbstractWorkerDao implements WorkerDao, FileIO
             for (Department department: csvDepartmentDao.departments) {
                 if(department.getId().equals(worker.getDepartment())){
                     department.getWorkersId().add(worker.getId());
-                    if(department.getWorkersId().contains("No workers")){
+                    if(department.getWorkersId().contains("NoWorkers")){
                         department.getWorkersId().remove(0);
                     }
                 } else {
@@ -142,7 +142,7 @@ public class CsvWorkerDao extends AbstractWorkerDao implements WorkerDao, FileIO
                         break;
                     }
                 }
-                if(department.getWorkersId().isEmpty()) department.getWorkersId().add("No workers");
+                if(department.getWorkersId().isEmpty()) department.getWorkersId().add("NoWorkers");
             }
         }
         csvDepartmentDao.storeEntities();
